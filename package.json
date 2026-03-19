@@ -1,0 +1,19 @@
+{
+  "name": "ifretes-monorepo",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo run dev",
+    "dev:api": "pnpm --filter @ifretes/api run dev",
+    "dev:web": "pnpm --filter @ifretes/web run dev",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,js,vue,json,md}\"",
+    "test": "turbo test"
+  },
+  "devDependencies": {
+    "turbo": "^2.4.4",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.2"
+  },
+  "packageManager": "pnpm@10.5.2"
+}

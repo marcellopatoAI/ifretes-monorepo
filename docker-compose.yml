@@ -1,0 +1,50 @@
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: ifretes-redis
+    ports:
+      - "4637:6379"
+    volumes:
+      - redis_data:/data
+
+  api:
+    build:
+      context: .
+      dockerfile: ./apps/api/Dockerfile
+    container_name: ifretes-api
+    ports:
+      - "4300:3000"
+    environment:
+      - DB_HOST=host.docker.internal
+      - DB_PORT=3309
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/apps/api/node_modules
+    depends_on:
+      - redis
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    command: pnpm --filter @ifretes/api run dev
+
+  web:
+    build:
+      context: .
+      dockerfile: ./apps/web/Dockerfile
+    container_name: ifretes-web
+    ports:
+      - "4517:5173"
+    environment:
+      - VITE_API_URL=http://localhost:4300/api/v1
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/apps/web/node_modules
+    depends_on:
+      - api
+    command: pnpm --filter @ifretes/web run dev --host
+
+volumes:
+  redis_data:
