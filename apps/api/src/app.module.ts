@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DatabaseModule } from './modules/database/database.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { OnboardingModule } from './modules/onboarding/onboarding.module';
 import { HalaiModule } from './integrations/halai/halai.module';
 import { StripeModule } from './integrations/stripe/stripe.module';
 
@@ -14,6 +15,7 @@ import { HealthController } from './health.controller';
     ConfigModule.forRoot({ isGlobal: true }),
     DatabaseModule,
     AuthModule,
+    OnboardingModule,
     HalaiModule,
     StripeModule,
   ],
