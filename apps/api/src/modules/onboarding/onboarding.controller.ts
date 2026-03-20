@@ -18,4 +18,20 @@ export class OnboardingController {
   async createIntent() {
     return this.stripeService.createSetupIntent();
   }
+
+  @Post('submit-waitlist')
+  async submitWaitlist(@Body() body: any) {
+    return this.onboardingService.submitWaitlist(body);
+  }
+
+  @Post('provision')
+  async provision(@Body() body: { 
+    cnpj: string, 
+    nome: string, 
+    email: string, 
+    razaoSocial: string,
+    setupIntentId: string 
+  }) {
+    return this.onboardingService.provisionAfterPayment(body);
+  }
 }

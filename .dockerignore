@@ -1,0 +1,17 @@
+node_modules
+dist
+.git
+.pnpm-store
+*.log
+.DS_Store
+.vscode
+.idea
+target
+coverage
+.cache
+.npm
+.pnpm
+apps/*/node_modules
+apps/*/dist
+packages/*/node_modules
+packages/*/dist
