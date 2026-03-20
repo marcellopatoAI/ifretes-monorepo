@@ -32,3 +32,13 @@ export type Envelope<T = any> = {
   error?: string;
   meta?: Record<string, any>;
 };
+
+export const WaitlistSubmitSchema = z.object({
+  cnpj: z.string().length(14),
+  nome: z.string().min(1),
+  email: z.string().email(),
+  telefone: z.string().optional(),
+  razaoSocial: z.string().optional(),
+});
+
+export type WaitlistSubmit = z.infer<typeof WaitlistSubmitSchema>;

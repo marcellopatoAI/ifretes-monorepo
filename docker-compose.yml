@@ -12,9 +12,12 @@ services:
       context: .
       dockerfile: ./apps/api/Dockerfile
     container_name: ifretes-api
+    env_file:
+      - .env
     ports:
       - "4300:3000"
     environment:
+      - PORT=3000
       - DB_HOST=host.docker.internal
       - DB_PORT=3309
       - REDIS_HOST=redis
@@ -34,10 +37,10 @@ services:
       context: .
       dockerfile: ./apps/web/Dockerfile
     container_name: ifretes-web
+    env_file:
+      - .env
     ports:
       - "4517:5173"
-    environment:
-      - VITE_API_URL=http://localhost:4300/api/v1
     volumes:
       - .:/app
       - /app/node_modules

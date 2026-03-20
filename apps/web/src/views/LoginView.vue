@@ -185,6 +185,7 @@ const handleLogin = () => {
 
             <button 
               type="button" 
+              @click="router.push('/onboarding')"
               class="w-full h-14 border-2 border-gray-100 text-gray-500 rounded-2xl flex items-center justify-center space-x-3 transition-all hover:bg-gray-50 hover:border-gray-200 font-bold tracking-wide"
             >
               <span>Criar conta e iniciar onboarding</span>

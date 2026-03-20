@@ -9,3 +9,5 @@ dist
 apps/api/dist
 apps/web/dist
 packages/contracts/dist
+.pnpm-store
+.turbo
